@@ -3,6 +3,7 @@ package com.id.contryapp.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.id.contryapp.BuildConfig
+import com.id.contryapp.data.CountryApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,4 +49,8 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideCountryApiService(retrofit: Retrofit): CountryApiService = retrofit.create(CountryApiService::class.java)
 }
