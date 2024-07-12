@@ -1,12 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.dagger.hilt.android)
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.id.contryapp"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         applicationId = "com.id.contryapp"
         minSdk = 24
@@ -14,6 +19,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "DEFAULT_URL", "\"https://restcountries.com/v3.1/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -66,4 +72,21 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.work)
+    // When using Kotlin.
+    kapt(libs.androidx.hilt.compiler)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    // gson converter
+    implementation(libs.converter.gson)
+    implementation(libs.coil.compose)
+
+
 }
