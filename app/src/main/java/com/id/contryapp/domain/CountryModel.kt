@@ -20,6 +20,16 @@ data class CountryModel(
             capital = "vix",
             flagUrl = "http://www.bing.com/search?q=tritani",
             tld = "dolor",
+            borderCountries = listOf("France", "Germany")
+        )
+        val empty = CountryModel (
+            name = "",
+            nativeName = "",
+            population = 0,
+            region = "",
+            capital = "",
+            flagUrl = "",
+            tld = "",
             borderCountries = listOf()
 
         )
